@@ -6,7 +6,7 @@ const mysql = require('mysql');
 const fs = require('fs');
 const cheerio = require('cheerio');
 const app = express();
-
+/// this is port
 const port = 7001;
 
 const db = mysql.createConnection({
