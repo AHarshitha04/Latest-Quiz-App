@@ -585,8 +585,8 @@
 //                             </p>
 //                             <p>
 //                                 Total Score:<span> {result.score}</span>
-//                             </p>
-//                             <p>
+//                                                          </p>
+//<p>
 //                                 Correct Answers:<span> {result.correctAnswers}</span>
 //                             </p>
 //                             <p>
@@ -740,7 +740,7 @@ const Paper = () => {
         const fetchQImages = async () => {
             let fetchedQImages = [];
 
-            for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
+            for (let i = 1; i <= 20000; i += 6) { // Assuming there are 100 sets of images
                 try {
                     const response = await fetch(`http://localhost:7001/images/${i}`);
                     const data = await response.json();
@@ -760,7 +760,7 @@ const Paper = () => {
         const fetchOPTImages = async () => {
             let fetchedOPTImages = [];
 
-            for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
+            for (let i = 1; i <= 20000; i += 6) { // Assuming there are 100 sets of images
                 try {
                     for (let j = i + 1; j <= i + 4; j++) {
                         const response = await fetch(`http://localhost:7001/images/${j}`);
@@ -819,6 +819,7 @@ const Paper = () => {
                             // />
                             )}
                         </h2>
+                        <div></div>
                         <ul className='options-container'>
                             {/* ... (options rendering logic) */}
                             {OPTimages
