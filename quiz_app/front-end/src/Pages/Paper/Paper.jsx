@@ -1,3 +1,6 @@
+// test commit
+
+
 // import React, { useEffect, useState } from 'react';
 // import quiz from '../../Data/quesAns'
 // import './Paper.css'
@@ -739,7 +742,7 @@ const Paper = () => {
 
             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
                 try {
-                    const response = await fetch(`http://localhost:7000/images/${i}`);
+                    const response = await fetch(`http://localhost:7001/images/${i}`);
                     const data = await response.json();
                     if (data.length > 0) {
                         fetchedQImages.push(data[0]); // Add only the first image from each set
@@ -760,7 +763,7 @@ const Paper = () => {
             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
                 try {
                     for (let j = i + 1; j <= i + 4; j++) {
-                        const response = await fetch(`http://localhost:7000/images/${j}`);
+                        const response = await fetch(`http://localhost:7001/images/${j}`);
                         const data = await response.json();
                         if (data.length > 0) {
                             fetchedOPTImages.push(data[0]); // Add the second to fifth images from each set
