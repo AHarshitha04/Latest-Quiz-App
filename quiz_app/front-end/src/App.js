@@ -8,7 +8,7 @@ import FullTest from './Pages/FullTest/FullTest'
 import ChapterTest from './Pages/ChapterTest/ChapterTest'
 import PreviousTest from './Pages/PreviousTest/PreviousTest'
 import Instructions from './Pages/Instructions/Instructions';
-
+import General_intructions_page from './Pages/General_intructions_page/General_intructions_page'
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Route path='/ChapterTest' element={<ChapterTest />} />
         <Route path='/PreviousTest' element={<PreviousTest />} />
         <Route path='/Instructions' element={<Instructions />} />
+        <Route path='/General_intructions_page' element={<General_intructions_page/>}/>
        </Routes>
     </BrowserRouter>
 

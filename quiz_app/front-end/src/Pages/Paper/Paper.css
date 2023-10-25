@@ -98,9 +98,9 @@ body {
     font-weight: 350;
     color: #050505;
 }
-.question {
+/* .question {
     border-bottom: 1px #000000 solid;
-}
+} */
 .options-container{
     width: 300px;
     height: 550px;
@@ -117,7 +117,7 @@ body {
 
 .quiz-container ul {
     margin-top: 20px;
-    margin-left: -40px;
+    /* margin-left: -40px; */
 }
 
 .quiz-container ul li {
@@ -144,6 +144,10 @@ body {
     border: none;
     cursor: pointer;
     margin-top: 15px;
+}
+.loading-gif{
+    padding-left: 500px;
+    padding-top: 200px;
 }
 
 /* .quiz-container button:disabled {
