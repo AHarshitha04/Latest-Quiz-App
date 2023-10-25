@@ -1,0 +1,64 @@
+.contentClass {
+    position: fixed;
+    top: 50px;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    overflow: auto;
+    font-size: 12px;
+
+    .insDiv {
+        line-height: 28px;
+    }
+
+    .grayDiv {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+        background: url(../../Images/grayBox.png) no-repeat center;
+        color: #000;
+    }
+    .orangeDiv {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+        background: url(../../Images/orangeBox.png) no-repeat center;
+        color: #fff;
+    }
+
+    .greenDiv {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+        background: url(../../Images/greenBox.png) no-repeat center;
+        color: #fff;
+    }
+
+    .purpleDiv {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+        background: url(../../Images/purpleBox.png) no-repeat center;
+        color: #fff;
+    }
+
+    .purpleTickDiv {
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        line-height: 35px;
+        cursor: pointer;
+        background: url(../../Images/purpleTickBox.png) no-repeat center;
+        color: #fff;
+    }
+
+
+}
