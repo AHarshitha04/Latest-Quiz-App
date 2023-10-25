@@ -1007,6 +1007,7 @@ const Paper = () => {
                             </ul>
                             {/* <button onClick={handleNextClick}>Next</button> */}
                         </div>
+                        {/* a */}
 
                         <div className="flex-right">
                             {/* <button className='clear-btn'>Mark for Review & Next</button>
