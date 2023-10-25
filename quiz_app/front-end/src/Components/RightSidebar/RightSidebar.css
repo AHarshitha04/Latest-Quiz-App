@@ -1,0 +1,90 @@
+
+
+.right-side-bar{
+   /* margin-top: 100px; */
+   width: 310px;
+   
+}
+
+.subject{
+    font-weight: 600;
+    font-size: large;
+    
+}
+.header-para{
+    font-size: 500;
+}
+
+.ques-btn{
+    display: flex;
+}
+
+.rightSidebar-topHeader{
+    padding: 10px;
+    font-weight: 600;
+    background-color: white;
+}
+.btn-ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  
+    /* border-radius: 5px; */
+}
+.quesAns-btn{
+    border-radius: 5px;
+    border: 1px solid black;
+    /* background-color: rgb(181, 221, 223); */
+    padding: 10px;
+}
+
+.sidebar-footer-header{
+
+            margin-right: 225px;
+            margin-bottom: 20px;
+        
+}
+.sidebar-footer{
+    margin-top: 300px;
+}
+.footer-btns{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.inst-btns{
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.instruction-btn1{
+    border: 1px solid black;
+    background-color: rgb(26, 194, 90);
+    color: white;
+    padding: 5px;
+    width: 30px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+.instruction-btn2{
+    border: 1px solid black;
+    background-color: rgb(230, 65, 65);
+    color: white;
+    padding: 5px;
+    width: 30px;
+    border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+}
+.instruction-btn3{
+    border: 1px solid black;
+    color: white;
+    background-color: rgb(157, 123, 238);
+    padding: 9px;
+    border-radius: 20px;
+}
+.instruction-btn4 {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 9px;
+}
