@@ -861,7 +861,7 @@ import './Paper.css';
 import PaperHeader from '../../Components/PaperHeader/PaperHeader';
 // import { Waveform } from '@uiball/loaders'
 import RightSidebar from '../../Components/RightSidebar/RightSidebar';
-
+import { DotSpinner } from '@uiball/loaders'
 
 
 const Paper = () => {
@@ -870,6 +870,7 @@ const Paper = () => {
     const [OPTimages, setOPTImages] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
+    // const [selectedAnswers, setSelectedAnswers] = useState(new Array(Qimages.questions.length).fill(''));
 
 
     useEffect(() => {
@@ -931,6 +932,15 @@ const Paper = () => {
 
     }
 
+    // const onAnswerSelected = (OptionLetter) => {
+    //     // Update the selected answer for the current question
+    //     const updatedSelectedAnswers = [...selectedAnswers];
+    //     updatedSelectedAnswers[currentQuestionIndex] = OptionLetter;
+    //     setSelectedAnswers(updatedSelectedAnswers);
+    //     // setSelectedAnswers(updatedSelectedAnswers, OptionLetter);
+
+    // };
+
     // Check if Qimages[currentQuestionIndex] is defined before accessing its properties
     const currentQuestion = Qimages[currentQuestionIndex];
     const questionImageSrc = currentQuestion ? `data:image/png;base64,${currentQuestion.image_data}` : '';
@@ -970,15 +980,48 @@ const Paper = () => {
 
 
                         <div className='options-container'>
+
+                            
                             <h2 className='question'>
                                 {currentQuestion ? (
-                                    <img
-                                        src={questionImageSrc}
-                                        alt={`QImage ${currentQuestionIndex + 1}`}
-                                    />
-                                ) : (
-                                    <p>Loading question...</p>
+                                 <div>
+                                        <img
+                                            src={questionImageSrc}
+                                            alt={`QImage ${currentQuestionIndex + 1}`}
+                                        />
+                                        <ul className='options-container'>
+                                            {/* ... (options rendering logic) */}
+                                            {OPTimages
+                                                .slice(currentQuestionIndex * 4, currentQuestionIndex * 4 + 4)
+                                                .map((optImage, optIndex) => (
 
+                                                    <li key={optIndex}>
+                                                        <input
+                                                        name='index'
+                                                            type="radio" 
+                                                          />
+                                                        <label className='alpha-index'>
+                                                            <img
+                                                                src={`data:image/png;base64,${optImage.image_data}`}
+                                                                alt={`OPTImage ${optIndex + 2}-${optIndex + 5}`}
+                                                            />
+                                                        </label>
+                                                    </li>
+                                                ))}
+                                        </ul>
+                                 </div>
+                                ) : (
+                                    // <p>Loading question...</p>
+                                  
+
+                                 <div className='loading-gif'>
+                                            <DotSpinner
+                                                size={90}
+                                                speed={0.9}
+                                                color="black"
+                                                
+                                            />
+                                 </div>
 
                                     // <Waveform
                                     //     size={40}
@@ -988,8 +1031,8 @@ const Paper = () => {
                                     // />
                                 )}
                             </h2>
-                            <ul className='options-container'>
-                                {/* ... (options rendering logic) */}
+                            {/* <ul className='options-container'>
+                                ... (options rendering logic)
                                 {OPTimages
                                     .slice(currentQuestionIndex * 4, currentQuestionIndex * 4 + 4)
                                     .map((optImage, optIndex) => (
@@ -1004,7 +1047,7 @@ const Paper = () => {
                                             </label>
                                         </li>
                                     ))}
-                            </ul>
+                            </ul> */}
                             {/* <button onClick={handleNextClick}>Next</button> */}
                         </div>
                         {/* a */}
