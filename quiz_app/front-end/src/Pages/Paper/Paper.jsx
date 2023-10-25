@@ -1030,6 +1030,10 @@ const Paper = () => {
                                     //     color="black"
                                     // />
                                 )}
+
+
+
+                                
                             </h2>
                             {/* <ul className='options-container'>
                                 ... (options rendering logic)
