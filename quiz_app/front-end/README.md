@@ -1,4 +1,4 @@
-/home/user/Documents/Daily work/october/24-10-2023 path in my pc
+<!-- /home/user/Documents/Daily work/october/24-10-2023 path in my pc -->
 
 
 
