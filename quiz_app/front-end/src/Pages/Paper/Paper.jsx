@@ -719,11 +719,148 @@
 
 
 
+// import React, { useEffect, useState } from 'react';
+// import './Paper.css';
+// import PaperHeader from '../../Components/PaperHeader/PaperHeader';
+// // import { Waveform } from '@uiball/loaders'
+
+
+
+
+// const Paper = () => {
+
+//     const [Qimages, setQImages] = useState([]);
+//     const [OPTimages, setOPTImages] = useState([]);
+//     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+
+
+
+//     useEffect(() => {
+//         // Fetch data for Qimages (first image from each set of IDs 1-6, 7-12, ...)
+//         const fetchQImages = async () => {
+//             let fetchedQImages = [];
+
+//             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
+//                 try {
+//                     const response = await fetch(`http://localhost:7001/images/${i}`);
+//                     const data = await response.json();
+//                     if (data.length > 0) {
+//                         fetchedQImages.push(data[0]); // Add only the first image from each set
+//                     }
+//                 } catch (error) {
+//                     console.error('Error fetching Qimages:', error);
+//                 }
+//             }
+
+//             setQImages(fetchedQImages);
+//         };
+
+
+//         // Fetch data for OPTimages (images 2 to 5 from each set of IDs 1-6, 7-12, ...)
+//         const fetchOPTImages = async () => {
+//             let fetchedOPTImages = [];
+
+//             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
+//                 try {
+//                     for (let j = i + 1; j <= i + 4; j++) {
+//                         const response = await fetch(`http://localhost:7001/images/${j}`);
+//                         const data = await response.json();
+//                         if (data.length > 0) {
+//                             fetchedOPTImages.push(data[0]); // Add the second to fifth images from each set
+//                         }
+//                     }
+//                 } catch (error) {
+//                     console.error('Error fetching OPTimages:', error);
+//                 }
+//             }
+
+//             setOPTImages(fetchedOPTImages);
+//         };
+
+//         fetchQImages();
+//         fetchOPTImages();
+//     }, []); // Empty dependency array to fetch data only once when the component mounts
+
+
+
+
+//     const handleNextClick = () => {
+//         // Move to the next question when the "Next" button is clicked
+//         setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+//     };
+
+
+//     // Check if Qimages[currentQuestionIndex] is defined before accessing its properties
+//     const currentQuestion = Qimages[currentQuestionIndex];
+//     const questionImageSrc = currentQuestion ? `data:image/png;base64,${currentQuestion.image_data}` : '';
+
+
+//     return (
+//         <div className='main'>
+//             <div className='sub-main'>
+//                 <div><PaperHeader /></div>
+//                 <div className="quiz-container">
+//                     <div className='options-container'>
+//                         <h2 className='question'>
+//                             {currentQuestion ? (
+//                                 <img
+//                                     src={questionImageSrc}
+//                                     alt={`QImage ${currentQuestionIndex + 1}`}
+//                                 />
+//                             ) : (
+//                                 <p>Loading question...</p>
+                                 
+
+//                             // <Waveform
+//                             //     size={40}
+//                             //     lineWeight={3.5}
+//                             //     speed={1}
+//                             //     color="black"
+//                             // />
+//                             )}
+//                         </h2>
+//                         <ul className='options-container'>
+//                             {/* ... (options rendering logic) */}
+//                             {OPTimages
+//                                 .slice(currentQuestionIndex * 4, currentQuestionIndex * 4 + 4)
+//                                 .map((optImage, optIndex) => (
+                                    
+//                                     <li key={optIndex}>
+//                                         <input type="radio" />
+//                                         <label className='alpha-index'>
+//                                             <img
+//                                                 src={`data:image/png;base64,${optImage.image_data}`}
+//                                                 alt={`OPTImage ${optIndex + 2}-${optIndex + 5}`}
+//                                             />
+//                                         </label>
+//                                     </li>
+//                                 ))}
+//                         </ul>
+//                         <button onClick={handleNextClick}>Next</button>
+//                     </div>
+
+//                 </div>
+//             </div>
+
+           
+            
+//             {/* ... */}
+//         </div>
+//     );
+// };
+
+// export default Paper;
+
+
+
+
+
+
 import React, { useEffect, useState } from 'react';
 import './Paper.css';
 import PaperHeader from '../../Components/PaperHeader/PaperHeader';
 // import { Waveform } from '@uiball/loaders'
-
+import RightSidebar from '../../Components/RightSidebar/RightSidebar';
 
 
 
@@ -742,7 +879,7 @@ const Paper = () => {
 
             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
                 try {
-                    const response = await fetch(`http://localhost:7001/images/${i}`);
+                    const response = await fetch(`http://localhost:7002/images/${i}`);
                     const data = await response.json();
                     if (data.length > 0) {
                         fetchedQImages.push(data[0]); // Add only the first image from each set
@@ -763,7 +900,7 @@ const Paper = () => {
             for (let i = 1; i <= 1000; i += 6) { // Assuming there are 100 sets of images
                 try {
                     for (let j = i + 1; j <= i + 4; j++) {
-                        const response = await fetch(`http://localhost:7001/images/${j}`);
+                        const response = await fetch(`http://localhost:7002/images/${j}`);
                         const data = await response.json();
                         if (data.length > 0) {
                             fetchedOPTImages.push(data[0]); // Add the second to fifth images from each set
@@ -789,10 +926,16 @@ const Paper = () => {
         setCurrentQuestionIndex(prevIndex => prevIndex + 1);
     };
 
+    const handlepreClick=()=>{
+        setCurrentQuestionIndex(prevIndex => prevIndex - 1);
+
+    }
 
     // Check if Qimages[currentQuestionIndex] is defined before accessing its properties
     const currentQuestion = Qimages[currentQuestionIndex];
     const questionImageSrc = currentQuestion ? `data:image/png;base64,${currentQuestion.image_data}` : '';
+
+    const addLeadingZero = (number) => (number > 9 ? number : `0${number}`)
 
 
     return (
@@ -800,51 +943,97 @@ const Paper = () => {
             <div className='sub-main'>
                 <div><PaperHeader /></div>
                 <div className="quiz-container">
-                    <div className='options-container'>
-                        <h2 className='question'>
-                            {currentQuestion ? (
-                                <img
-                                    src={questionImageSrc}
-                                    alt={`QImage ${currentQuestionIndex + 1}`}
-                                />
-                            ) : (
-                                <p>Loading question...</p>
-                                 
+                    <div>
+                        <div className='subjects'>
+                            <button className='subject-btn'>Mathematics</button>
+                            <button className='subject-btn'>Physics</button>
+                            <button className='subject-btn'>Chemistry</button>
+                        </div>
+                        <div className='second-header'>
+                            <div className='single-select-question'>
+                                Single Select Question
+                            </div>
+                            <div className='right-header'>
+                                <div className='marks'>
+                                    Marks: <div className='plus-mark'>+1</div>
+                                    <div className='minus-mark'>-1</div>
+                                </div>
+                                {/* <div className='timer'>
+                                    <h3>Time Left: {formatTime(countdown)}</h3>
+                                </div> */}
+                            </div>
+                        </div>
+                        <div className='question-no'>
+                            <span className="active-question-no">Question No. {addLeadingZero(currentQuestionIndex + 1)}</span>
+                            <span className="total-question"> of {addLeadingZero(Qimages.length)}</span>
+                        </div>
 
-                            // <Waveform
-                            //     size={40}
-                            //     lineWeight={3.5}
-                            //     speed={1}
-                            //     color="black"
-                            // />
-                            )}
-                        </h2>
-                        <ul className='options-container'>
-                            {/* ... (options rendering logic) */}
-                            {OPTimages
-                                .slice(currentQuestionIndex * 4, currentQuestionIndex * 4 + 4)
-                                .map((optImage, optIndex) => (
-                                    
-                                    <li key={optIndex}>
-                                        <input type="radio" />
-                                        <label className='alpha-index'>
-                                            <img
-                                                src={`data:image/png;base64,${optImage.image_data}`}
-                                                alt={`OPTImage ${optIndex + 2}-${optIndex + 5}`}
-                                            />
-                                        </label>
-                                    </li>
-                                ))}
-                        </ul>
-                        <button onClick={handleNextClick}>Next</button>
+
+                        <div className='options-container'>
+                            <h2 className='question'>
+                                {currentQuestion ? (
+                                    <img
+                                        src={questionImageSrc}
+                                        alt={`QImage ${currentQuestionIndex + 1}`}
+                                    />
+                                ) : (
+                                    <p>Loading question...</p>
+
+
+                                    // <Waveform
+                                    //     size={40}
+                                    //     lineWeight={3.5}
+                                    //     speed={1}
+                                    //     color="black"
+                                    // />
+                                )}
+                            </h2>
+                            <ul className='options-container'>
+                                {/* ... (options rendering logic) */}
+                                {OPTimages
+                                    .slice(currentQuestionIndex * 4, currentQuestionIndex * 4 + 4)
+                                    .map((optImage, optIndex) => (
+
+                                        <li key={optIndex}>
+                                            <input type="radio" />
+                                            <label className='alpha-index'>
+                                                <img
+                                                    src={`data:image/png;base64,${optImage.image_data}`}
+                                                    alt={`OPTImage ${optIndex + 2}-${optIndex + 5}`}
+                                                />
+                                            </label>
+                                        </li>
+                                    ))}
+                            </ul>
+                            {/* <button onClick={handleNextClick}>Next</button> */}
+                        </div>
+
+                        <div className="flex-right">
+                            {/* <button className='clear-btn'>Mark for Review & Next</button>
+                            <button className='clear-btn' onClick={clearResponse}>Clear Response</button>
+                            <button className='previous-btn' onClick={goToPreviousQuestion} disabled={activeQuestion === 0}>
+                                <i class="fa-solid fa-angles-left"></i>
+                                Previous
+                            </button> */}
+                            {/* <button className='save-btn' onClick={onClickNext} disabled={!selectedAnswers[activeQuestion]}>
+                                {activeQuestion === questions.length - 1 ? 'Submit' : 'Save & Next'}<i class="fa-solid fa-angles-right"></i>
+                            </button> */}
+
+                            <button onClick={handlepreClick}>Previous</button>
+
+                            <button onClick={handleNextClick}>Save&Next</button>
+
+                        </div>
                     </div>
+
 
                 </div>
             </div>
 
-           
-            
-            {/* ... */}
+            <div className='rightsidebar'><RightSidebar /></div>
+            {/* onQuestionSelect={handleQuestionSelect} answeredQuestions={answeredQuestions} */}
+
+
         </div>
     );
 };
