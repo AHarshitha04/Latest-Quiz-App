@@ -114,8 +114,7 @@
 
 
 
-
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 
 import './RightSidebar.css'
 
@@ -129,7 +128,7 @@ const buttons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 
 // )
 
 
-const RightSidebar = ({ onQuestionSelect, questionStatus }) => {
+const RightSidebar = ({ onQuestionSelect, questionStatus, seconds }) => {
 
 
     const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -153,6 +152,8 @@ const RightSidebar = ({ onQuestionSelect, questionStatus }) => {
         )
 
     })
+
+   
 
 
 
@@ -189,13 +190,41 @@ const RightSidebar = ({ onQuestionSelect, questionStatus }) => {
     //     )
     // })
 
+  
+
+    const totalTime = 180 * 60; // 180 minutes in seconds
+    const [wtimer, setWTimer] = useState(totalTime);
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setWTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+  
+      // Clear the interval and handle time-up logic when timer reaches 0
+      if (wtimer <= 0) {
+        clearInterval(interval);
+        // Handle time-up logic here (e.g., navigate to a different component)
+      }
+  
+      // Clean up the interval on component unmount or when navigating away
+      return () => {
+        clearInterval(interval);
+      };
+    }, [wtimer]);
+  
+    const WformatTime = (seconds) => {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
+      return `${hours > 9 ? hours : '0' + hours}:${minutes > 9 ? minutes : '0' + minutes}:${remainingSeconds > 9 ? remainingSeconds : '0' + remainingSeconds}`;
+    };
 
 
     return (
 
         <div className='right-side-bar'>
             <div className='rightSidebar-topHeader'><p>Name of the person</p>
-                <p>Remaining Time: 1:10:30</p>
+            <p>Time Left:  {WformatTime(wtimer)}</p>
             </div>
             <div className='sidebar-header'>
                 <p className='header-para'>You are viewing <span className='subject'>Mathematics</span> Section Question Palette</p>

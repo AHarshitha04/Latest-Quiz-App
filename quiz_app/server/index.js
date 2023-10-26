@@ -7,7 +7,7 @@ const fs = require('fs');
 const cheerio = require('cheerio');
 const app = express();
 
-const port = 7001;
+const port = 7002;
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -81,7 +81,7 @@ app.get('/images/:id', (req, res) => {
     const id = req.params.id; // Use req.params.id to get the ID from the route
 
     // Query the database to fetch images for the specified document_id
-    const selectImagesSql = 'SELECT image_data FROM img WHERE id = ?'; // Change "id" to "document_id"
+    const selectImagesSql = 'SELECT image_data FROM images WHERE id = ?'; // Change "id" to "document_id"
     db.query(selectImagesSql, [id], (error, results) => {
         if (error) {
             console.error(error);

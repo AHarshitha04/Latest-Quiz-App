@@ -5,12 +5,13 @@ import {
 } from "../../Data/Introduction_page_DATA"
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Paper from '../Paper/Paper';
 
 const General_intructions_page = () => {
     return (
         <>
             <General_intructions_page_header />
-            <General_intructions_page_container />
+            <General_intructions_page_container  seconds={600}/>
         </>
     );
 };
@@ -34,23 +35,26 @@ export const General_intructions_page_header = () => {
     );
 };
 
-export const General_intructions_page_container = ({seconds}) => {
-         const [countdown, setCountdown] = useState(seconds);
-        const timerId = useRef();
+export const General_intructions_page_container = () => {
 
-        useEffect(() => {
-            if (countdown <= 0) {
-                clearInterval(timerId.current);
-                alert("End");
-            }
-        }, [countdown]);
-        const navigate = useNavigate();
-        const startCountdown = () => {
-            timerId.current = setInterval(() => {
-                setCountdown((prev) => prev - 1);
-            }, 1000);
-            navigate('/Paper');
-        };
+    
+
+    //  const [countdown, setCountdown] = useState(seconds);
+        // const timerId = useRef();
+
+        // useEffect(() => {
+        //     if (countdown <= 0) {
+        //         clearInterval(timerId.current);
+        //         alert("End");
+        //     }
+        // }, [countdown]);
+        // const navigate = useNavigate();
+        // const startCountdown = () => {
+        //     timerId.current = setInterval(() => {
+        //         setCountdown((prev) => prev - 1);
+        //     }, 1000);
+        //     navigate('/Paper');
+        // };
     return (
         <>
             {General_intructions_page_content.map((gipc, index) => {
@@ -158,8 +162,8 @@ export const General_intructions_page_container = ({seconds}) => {
         <Link to='/' className="intro_next_btn">NEXT <AiOutlineArrowRight/></Link>
       </div> */}
             <div className="gn_next_btn_container">
-                <button onClick={startCountdown}>
-                <Link  className="gn_next_btn">Iam ready to begin <AiOutlineArrowRight /></Link>
+                <button>
+                <Link to='/Paper' element={<Paper/>}  className="gn_next_btn">Iam ready to begin <AiOutlineArrowRight /></Link>
                 </button>
             </div>
         </>
